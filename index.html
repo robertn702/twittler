@@ -11,14 +11,22 @@
         var $body = $('body');
         $body.html('');
 
-        var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
-          index -= 1;
+        var index = [];
+        
+        var updateTweets = function() {
+          index = streams.home.length - 1;
+          console.log(streams);
+          while(index >= 0){
+            var tweet = streams.home[index];
+            var $tweet = $('<div></div>');
+            $tweet.text('@' + tweet.user + ': ' + tweet.message + " " + tweet.created_at);
+            $tweet.prependTo($body);
+            index -= 1;
+          }
+
+          // setTimeout(updateTweets, 1500);
         }
+        updateTweets();
 
       });
 
