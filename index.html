@@ -16,6 +16,7 @@
 
         var index = [];
         var shownUser = '';
+        var showOrHide = true;
 
         var updateTweets = function() {
           index = streams.home.length - 1;
@@ -35,8 +36,9 @@
 
         $('div').click(function () {
           var selectedClass = this.className;
-          shownUser = selectedClass;
-          $('div').not($('.' + selectedClass)).toggle();
+          showOrHide ? showOrHide = false : showOrHide = true;
+          showOrHide ? shownUser = '' : shownUser = selectedClass;
+          $('div').not($('.' + selectedClass)).toggle(showOrHide);
         });
 
       });
